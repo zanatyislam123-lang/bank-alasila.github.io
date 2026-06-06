@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بنك الأسئلة - الثانوية العامة</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Google AdSense - ضع هنا كود AdSense الخاص بك -->
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+
+<style>
+  :root {
+    --primary: #1565C0;
+    --primary-light: #1976D2;
+    --primary-dark: #0D47A1;
+    --gold: #FFD700;
+    --gold-dark: #FFC107;
+    --white: #FFFFFF;
+    --bg: #F0F4FF;
+    --text: #1a1a2e;
+    --gray: #6B7280;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Tajawal', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, #1976D2 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: rgba(255,215,0,0.05);
+    border-radius: 50%;
+    top: -200px;
+    right: -200px;
+    animation: pulse 6s ease-in-out infinite;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 50%;
+    bottom: -100px;
+    left: -100px;
+    animation: pulse 8s ease-in-out infinite reverse;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 1; }
+  }
+
+  .hero-badge {
+    background: rgba(255,215,0,0.2);
+    border: 1px solid rgba(255,215,0,0.5);
+    color: var(--gold);
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    animation: fadeDown 0.8s ease forwards;
+    letter-spacing: 1px;
+  }
+
+  .hero-logo {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    margin-bottom: 30px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    animation: fadeDown 0.8s ease 0.2s forwards;
+    opacity: 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 8vw, 72px);
+    font-weight: 900;
+    color: var(--white);
+    margin-bottom: 16px;
+    line-height: 1.2;
+    animation: fadeDown 0.8s ease 0.4s forwards;
+    opacity: 0;
+  }
+
+  .hero h1 span {
+    color: var(--gold);
+  }
+
+  .hero p {
+    font-size: clamp(16px, 3vw, 22px);
+    color: rgba(255,255,255,0.85);
+    max-width: 600px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    animation: fadeDown 0.8s ease 0.6s forwards;
+    opacity: 0;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeDown 0.8s ease 0.8s forwards;
+    opacity: 0;
+  }
+
+  .btn-download {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: var(--primary-dark);
+    padding: 18px 40px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: 0 10px 40px rgba(255,215,0,0.4);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .btn-download:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(255,215,0,0.5);
+  }
+
+  .btn-secondary {
+    background: rgba(255,255,255,0.1);
+    color: var(--white);
+    padding: 18px 40px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    border: 2px solid rgba(255,255,255,0.3);
+    transition: all 0.3s ease;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-4px);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 60px;
+    animation: fadeDown 0.8s ease 1s forwards;
+    opacity: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .stat {
+    text-align: center;
+    color: white;
+  }
+
+  .stat-num {
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--gold);
+  }
+
+  .stat-label {
+    font-size: 14px;
+    opacity: 0.8;
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* AD BANNER */
+  .ad-banner {
+    background: white;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .ad-placeholder {
+    background: #f3f4f6;
+    border: 2px dashed #d1d5db;
+    border-radius: 8px;
+    padding: 20px;
+    color: #9ca3af;
+    font-size: 14px;
+    max-width: 728px;
+    margin: 0 auto;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* FEATURES */
+  .section {
+    padding: 80px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 900;
+    color: var(--primary-dark);
+    margin-bottom: 16px;
+  }
+
+  .section-title span { color: var(--gold-dark); }
+
+  .section-sub {
+    text-align: center;
+    color: var(--gray);
+    font-size: 18px;
+    margin-bottom: 60px;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .feature-card {
+    background: white;
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(21,101,192,0.15);
+    border-color: var(--primary-light);
+  }
+
+  .feature-icon {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+
+  .feature-card h3 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+  }
+
+  .feature-card p {
+    color: var(--gray);
+    line-height: 1.8;
+    font-size: 15px;
+  }
+
+  /* SCREENSHOTS */
+  .screenshots {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    padding: 80px 20px;
+    text-align: center;
+  }
+
+  .screenshots h2 {
+    color: white;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 900;
+    margin-bottom: 16px;
+  }
+
+  .screenshots p {
+    color: rgba(255,255,255,0.8);
+    font-size: 18px;
+    margin-bottom: 50px;
+  }
+
+  .screens-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .screen-mock {
+    width: 180px;
+    height: 320px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 24px;
+    border: 2px solid rgba(255,255,255,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 40px;
+    gap: 12px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s;
+  }
+
+  .screen-mock:hover { transform: scale(1.05); }
+
+  .screen-mock span {
+    font-size: 14px;
+    opacity: 0.8;
+    font-weight: 700;
+  }
+
+  /* AD MIDDLE */
+  .ad-middle {
+    padding: 40px 20px;
+    text-align: center;
+    background: white;
+  }
+
+  /* HOW TO */
+  .how-to {
+    background: white;
+    padding: 80px 20px;
+  }
+
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 24px;
+    background: var(--bg);
+    border-radius: 16px;
+    transition: all 0.3s;
+  }
+
+  .step:hover {
+    background: #E3F2FD;
+    transform: translateX(-8px);
+  }
+
+  .step-num {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  .step h3 {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--primary-dark);
+    margin-bottom: 6px;
+  }
+
+  .step p {
+    color: var(--gray);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* DOWNLOAD SECTION */
+  .download-section {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    padding: 80px 20px;
+    text-align: center;
+  }
+
+  .download-section h2 {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 900;
+    color: var(--primary-dark);
+    margin-bottom: 16px;
+  }
+
+  .download-section p {
+    font-size: 18px;
+    color: var(--primary-dark);
+    opacity: 0.8;
+    margin-bottom: 40px;
+  }
+
+  .download-btn-big {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--primary-dark);
+    color: white;
+    padding: 22px 60px;
+    border-radius: 50px;
+    font-size: 22px;
+    font-weight: 900;
+    text-decoration: none;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+  }
+
+  .download-btn-big:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+
+  .file-info {
+    margin-top: 20px;
+    color: var(--primary-dark);
+    opacity: 0.7;
+    font-size: 14px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--primary-dark);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 14px;
+    line-height: 2;
+  }
+
+  footer strong { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">📚 تطبيق الثانوية العامة رقم ١</div>
+  <div class="hero-logo">📖</div>
+  <h1>بنك <span>الأسئلة</span></h1>
+  <p>استعد للثانوية العامة بأفضل طريقة! آلاف الأسئلة في جميع المواد مع شرح تفصيلي لكل سؤال</p>
+  <div class="hero-btns">
+    <a href="https://www.mediafire.com/file/n04yg7sve46kxfo/بنك_الأسئلة.apk/file" class="btn-download" target="_blank" rel="noopener">
+      ⬇️ تحميل من MediaFire
+    </a>
+    <a href="https://t.me/bnkasala/3" class="btn-secondary" target="_blank" rel="noopener">
+      ✈️ تحميل من Telegram
+    </a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">١٠٠٪</div>
+      <div class="stat-label">مجاني تماماً</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">كل</div>
+      <div class="stat-label">المواد الدراسية</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">٢٤/٧</div>
+      <div class="stat-label">متاح دائماً</div>
+    </div>
+  </div>
+</section>
+
+<!-- إعلان أعلى الصفحة -->
+<div class="ad-banner">
+  <!-- ضع هنا كود إعلان AdSense -->
+  <div class="ad-placeholder">مساحة إعلانية - 728×90</div>
+</div>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <h2 class="section-title">لماذا <span>بنك الأسئلة؟</span></h2>
+  <p class="section-sub">كل ما تحتاجه للنجاح في مكان واحد</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">📝</div>
+      <h3>أسئلة اختيار متعدد</h3>
+      <p>آلاف الأسئلة متعددة الاختيارات مع تصحيح فوري وشرح تفصيلي لكل سؤال</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">✍️</div>
+      <h3>أسئلة مقالية</h3>
+      <p>اكتب إجابتك وقارنها بالإجابة النموذجية لتطوير مهاراتك الكتابية</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>جدول الأسئلة</h3>
+      <p>تابع تقدمك بسهولة وابدأ من أي سؤال تريد مع نظام تتبع ذكي</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📚</div>
+      <h3>تنظيم مثالي</h3>
+      <p>مواد ← فصول ← دروس. كل شيء منظم لتجد ما تريد بسهولة</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎯</div>
+      <h3>نتائج تفصيلية</h3>
+      <p>بعد كل جلسة احصل على تقرير شامل بنتيجتك ونسبة نجاحك</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📰</div>
+      <h3>آخر الأخبار</h3>
+      <p>ابق على اطلاع بأحدث أخبار الثانوية العامة والتنبيهات الهامة</p>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="screenshots">
+  <h2>شاهد التطبيق</h2>
+  <p>تصميم عصري وسهل الاستخدام</p>
+  <div class="screens-grid">
+    <div class="screen-mock">📚<span>الشاشة الرئيسية</span></div>
+    <div class="screen-mock">❓<span>شاشة الأسئلة</span></div>
+    <div class="screen-mock">✅<span>النتائج</span></div>
+    <div class="screen-mock">📊<span>جدول الأسئلة</span></div>
+  </div>
+</section>
+
+<!-- إعلان وسط الصفحة -->
+<div class="ad-middle">
+  <!-- ضع هنا كود إعلان AdSense -->
+  <div class="ad-placeholder">مساحة إعلانية - 728×90</div>
+</div>
+
+<!-- HOW TO -->
+<section class="how-to">
+  <div style="max-width:1100px; margin:0 auto;">
+    <h2 class="section-title">كيف <span>تبدأ؟</span></h2>
+    <p class="section-sub">٣ خطوات بسيطة فقط</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">١</div>
+        <div>
+          <h3>حمّل التطبيق</h3>
+          <p>اضغط على زر التحميل واحفظ ملف APK على هاتفك</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">٢</div>
+        <div>
+          <h3>ثبّت التطبيق</h3>
+          <p>افتح الملف وثبّت التطبيق، قد تحتاج تفعيل "السماح بمصادر غير معروفة" في الإعدادات</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">٣</div>
+        <div>
+          <h3>ابدأ الدراسة</h3>
+          <p>اختر مادتك وابدأ في حل الأسئلة والاستعداد للثانوية العامة</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section class="download-section">
+  <h2>حمّل التطبيق الآن 🚀</h2>
+  <p>مجاني تماماً - لا يحتاج تسجيل</p>
+  <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
+    <a href="https://www.mediafire.com/file/n04yg7sve46kxfo/بنك_الأسئلة.apk/file" class="download-btn-big" target="_blank">
+      ⬇️ تحميل من MediaFire
+    </a>
+    <a href="https://t.me/bnkasala/3" class="download-btn-big" target="_blank" style="background:#0088cc;">
+      ✈️ تحميل من Telegram
+    </a>
+  </div>
+  <div class="file-info">
+    متوافق مع Android 7.0 وما فوق • الحجم تقريباً 27MB
+  </div>
+</section>
+
+<!-- إعلان أسفل الصفحة -->
+<div class="ad-middle">
+  <!-- ضع هنا كود إعلان AdSense -->
+  <div class="ad-placeholder">مساحة إعلانية - 728×90</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <strong>بنك الأسئلة</strong> - للثانوية العامة المصرية<br>
+  جميع الحقوق محفوظة © 2025<br>
+  <small>هذا التطبيق مجاني ومخصص لمساعدة الطلاب على النجاح</small>
+</footer>
+
+</body>
+</html>
